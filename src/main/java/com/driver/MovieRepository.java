@@ -74,9 +74,9 @@ public class MovieRepository {
     public void deleteDirector(String director){
         // your code here
 
-//        if(directorMovieMapping.containsKey(director)){
-//            directorMovieMapping.remove(director);
-//        }
+        if(directorMovieMapping.containsKey(director)){
+            directorMovieMapping.remove(director);
+        }
         if (directorMap.containsKey(director)) {
             directorMap.remove(director);
         }
@@ -85,9 +85,9 @@ public class MovieRepository {
 
     public void deleteAllDirector(){
         // your code here
-//        if(!directorMovieMapping.isEmpty()) {
-//            directorMovieMapping.clear();
-//        }
+        if(!directorMovieMapping.isEmpty()) {
+            directorMovieMapping.clear();
+        }
         if (!directorMap.isEmpty()) {
             directorMap.clear();
         }
