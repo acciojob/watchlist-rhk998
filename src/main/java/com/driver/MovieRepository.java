@@ -39,55 +39,34 @@ public class MovieRepository {
 
     public Movie findMovie(String movie){
         // your code here
-        if(movieMap.containsKey(movie)){
-            return movieMap.get(movie);
-        }
-        return null;
+        return movieMap.getOrDefault(movie, null);
     }
 
     public Director findDirector(String director){
         // your code here
-        if(directorMap.containsKey(director)){
-            return directorMap.get(director);
-        }
-        return null;
+        return directorMap.getOrDefault(director, null);
     }
 
     public List<String> findMoviesFromDirector(String director){
         // your code here
-        if(directorMovieMapping.containsKey(director)){
-            List<String> movies = directorMovieMapping.get(director);
-            return movies;
-        }
-        return null;
+        return directorMovieMapping.getOrDefault(director, null);
     }
 
     public List<String> findAllMovies(){
-        if(!movieMap.isEmpty()) {
             return new ArrayList<>(movieMap.keySet());
-        }
-        return null;
+
     }
 
     public void deleteDirector(String director){
         // your code here
-
-//        if(directorMovieMapping.containsKey(director)){
-//            directorMovieMapping.remove(director);
-//        }
-        if (directorMap.containsKey(director)) {
-            directorMap.remove(director);
-        }
+        directorMap.remove(director);
+        directorMovieMapping.remove(director);
 
     }
 
     public void deleteAllDirector(){
         // your code here
-//        if(!directorMovieMapping.isEmpty()) {
-//            directorMovieMapping.clear();
-//        }
-        if (!directorMap.isEmpty()) {
-            directorMap.clear();
-        }
+       directorMap.clear();
+       directorMovieMapping.clear();
     }
 }
