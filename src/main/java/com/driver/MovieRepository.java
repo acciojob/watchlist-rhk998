@@ -21,6 +21,7 @@ public class MovieRepository {
         // your code here
         String movieName = movie.getName();
         movieMap.put(movieName,movie);
+        System.out.println("added movie " + movieName);
     }
 
     public void saveDirector(Director director){
@@ -31,11 +32,11 @@ public class MovieRepository {
 
     public void saveMovieDirectorPair(String movie, String director){
         if(movieMap.containsKey(movie) && directorMap.containsKey(director)){
-            // your code here
             List<String> movieList = new ArrayList<>();
             movieList.add(movie);
             directorMovieMapping.put(director,movieList);
         }
+
     }
 
     public Movie findMovie(String movie){
@@ -64,18 +65,31 @@ public class MovieRepository {
     }
 
     public List<String> findAllMovies(){
-        return new ArrayList<>(movieMap.keySet());
+        if(!movieMap.isEmpty()) {
+            return new ArrayList<>(movieMap.keySet());
+        }
+        return null;
     }
 
     public void deleteDirector(String director){
         // your code here
-        if(directorMovieMapping.containsKey(director)){
-            directorMovieMapping.remove(director);
+
+//        if(directorMovieMapping.containsKey(director)){
+//            directorMovieMapping.remove(director);
+//        }
+        if (directorMap.containsKey(director)) {
+            directorMap.remove(director);
         }
+
     }
 
     public void deleteAllDirector(){
         // your code here
-        directorMovieMapping.clear();
+//        if(!directorMovieMapping.isEmpty()) {
+//            directorMovieMapping.clear();
+//        }
+        if (!directorMap.isEmpty()) {
+            directorMap.clear();
+        }
     }
 }

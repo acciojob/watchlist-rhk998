@@ -81,6 +81,7 @@ public class MovieController {
     public ResponseEntity<String> deleteAllDirectors(){
         // your code here
         movieService.deleteAllDirectors();
+
         return new ResponseEntity<>("All directors deleted successfully", HttpStatus.CREATED);
     }
 }
