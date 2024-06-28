@@ -32,10 +32,12 @@ public class MovieRepository {
 
     public void saveMovieDirectorPair(String movie, String director){
         if(movieMap.containsKey(movie) && directorMap.containsKey(director)){
-            List<String> movieList = new ArrayList<>();
+            List<String> movieList = directorMovieMapping.getOrDefault(director, new ArrayList<>());
             movieList.add(movie);
             directorMovieMapping.put(director,movieList);
         }
+
+
 
     }
 
