@@ -60,6 +60,15 @@ public class MovieRepository {
     public void deleteDirector(String director){
         // your code here
         directorMap.remove(director);
+
+        List<String> moviesToDelete =  findMoviesFromDirector(director);
+
+        for(String movie : moviesToDelete){
+            if(movieMap.containsKey(movie)){
+                movieMap.remove(movie);
+            }
+        }
+
         directorMovieMapping.remove(director);
 
     }
@@ -67,6 +76,18 @@ public class MovieRepository {
     public void deleteAllDirector(){
         // your code here
        directorMap.clear();
-       directorMovieMapping.clear();
+
+        List<String> moviesToDelete = new ArrayList<>() ;
+
+        for(List<String> movies : directorMovieMapping.values()){
+            moviesToDelete.addAll(movies);
+        }
+        for(String movie : moviesToDelete){
+            if(movieMap.containsKey(movie)){
+                movieMap.remove(movie);
+            }
+        }
+
+        directorMovieMapping.clear();
     }
 }
